@@ -1,8 +1,8 @@
-# 📊 Data Mining Project – Olist E-Commerce
+# Data Mining Project – Olist E-Commerce
 
 Dự án môn **Khai phá dữ liệu (Data Mining)**, sử dụng **Python** để tiền xử lý và phân tích bộ dữ liệu thương mại điện tử thực tế **Brazilian E-Commerce Public Dataset by Olist**.
 
-## 🎯 Mục tiêu
+## Mục tiêu
 
 Thực hiện quy trình xử lý dữ liệu:
 
@@ -26,7 +26,7 @@ Dữ liệu sạch
 
 ---
 
-# 🛠️ Công cụ sử dụng
+# Công cụ sử dụng
 
 * **Python**
 * **Visual Studio Code**
@@ -49,7 +49,7 @@ Các thư viện được quản lý trong `requirements.txt`.
 
 ---
 
-# 📂 Cấu trúc project
+# Cấu trúc project
 
 ```text
 data_mining_project/
@@ -79,7 +79,7 @@ Chứa các Jupyter Notebook của dự án.
 
 ---
 
-# 🚀 Hướng dẫn cài đặt
+# Hướng dẫn cài đặt
 
 ## 1. Cài Python
 
@@ -109,7 +109,7 @@ https://git-scm.com/
 
 ---
 
-# 📥 3. Clone project
+# 3. Clone project
 
 Mở Terminal/PowerShell tại thư mục muốn lưu project:
 
@@ -131,7 +131,7 @@ code .
 
 ---
 
-# 🐍 4. Tạo môi trường Python
+# 4. Tạo môi trường Python
 
 Trong Terminal của VS Code:
 
@@ -153,7 +153,7 @@ Nếu thành công, Terminal sẽ xuất hiện:
 
 ---
 
-# 📦 5. Cài thư viện
+# 5. Cài thư viện
 
 Sau khi kích hoạt `venv`:
 
@@ -169,7 +169,7 @@ pip list
 
 ---
 
-# 📊 6. Chuẩn bị Dataset
+# 6. Chuẩn bị Dataset
 
 Dataset sử dụng:
 
@@ -203,7 +203,7 @@ data/
 └── processed/
 ```
 
-### ⚠️ Lưu ý
+### Lưu ý
 
 * Không đổi tên các file CSV.
 * Không chỉnh sửa trực tiếp dữ liệu trong `data/raw/`.
@@ -214,7 +214,7 @@ Mỗi thành viên cần **tự tải dataset về máy**.
 
 ---
 
-# 📓 7. Làm việc với Jupyter Notebook
+# 7. Làm việc với Jupyter Notebook
 
 Mở file `.ipynb` trong VS Code.
 
@@ -240,7 +240,7 @@ Shift + Enter
 
 ---
 
-# 🔄 8. Quy trình xử lý dữ liệu
+# 8. Quy trình xử lý dữ liệu
 
 Các bước xử lý dự kiến:
 
@@ -274,11 +274,11 @@ step5_encoded.csv
 olist_cleaned.csv
 ```
 
-> ⚠️ Tên notebook và quy trình có thể được điều chỉnh khi nhóm thống nhất phương pháp xử lý dữ liệu.
+> Tên notebook và quy trình có thể được điều chỉnh khi nhóm thống nhất phương pháp xử lý dữ liệu.
 
 ---
 
-# 🌿 9. Quy tắc Git
+# 9. Quy tắc Git
 
 ## Không làm việc trực tiếp trên `main`
 
@@ -307,7 +307,7 @@ Sau đó tạo **Pull Request** trên GitHub để kiểm tra và merge vào `ma
 
 ---
 
-# 🔄 10. Cập nhật code mới nhất
+# 10. Cập nhật code mới nhất
 
 Trước khi bắt đầu làm việc:
 
@@ -324,7 +324,7 @@ git checkout feature/ten-cong-viec
 
 ---
 
-# ⚠️ 11. Một số lỗi thường gặp
+# 11. Một số lỗi thường gặp
 
 ### Python không hoạt động
 
@@ -366,7 +366,7 @@ Kernel.
 
 ---
 
-# 📌 Lưu ý chung
+# Lưu ý chung
 
 * Sử dụng **đường dẫn tương đối**, không sử dụng đường dẫn riêng trên máy cá nhân.
 * Không commit `venv/`.
@@ -377,6 +377,6 @@ Kernel.
 
 ---
 
-## 🎯 Kết quả hướng tới
+## Kết quả hướng tới
 
 Xây dựng quy trình tiền xử lý dữ liệu bằng **Python**, từ dữ liệu thương mại điện tử thô đến tập dữ liệu sạch phục vụ cho các bước **khai phá và phân tích dữ liệu tiếp theo**.
