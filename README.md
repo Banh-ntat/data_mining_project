@@ -80,7 +80,7 @@ data_mining_project/
 ├── notebooks/
 │   ├── 01_data_integration.ipynb        # Tích hợp dữ liệu
 │   ├── 02_eda_exploration.ipynb         # Khám phá dữ liệu
-│   ├── 03_missing_duplicates.ipynb      # Xử lý thiếu/trùng
+│   ├── 03_missing_duplicates.ipynb           # Xử lý thiếu & trùng
 │   ├── 04_outliers_handling.ipynb       # Xử lý ngoại lai
 │   ├── 05_data_encoding.ipynb           # Mã hóa dữ liệu
 │   ├── 06_feature_rfm.ipynb             # Tạo feature RFM
