@@ -258,14 +258,14 @@ Dự án được chia thành **4 giai đoạn** khai phá dữ liệu:
 
 Chuẩn bị dữ liệu sạch cho phân tích qua 6 bước:
 
-| Bước | Notebook | Mô Tả | Input | Output | Git Branch |
-|------|----------|-------|-------|--------|-----------|
-| 1 | 01_data_integration.ipynb | Tích hợp 4 bảng gốc | 4 CSV | step1_merged.csv | `feature/data-integration` |
-| 2 | 02_eda_exploration.ipynb | Khám phá & phân tích dữ liệu | step1_merged.csv | (Không) | `feature/eda-exploration` |
-| 3 | 03_missing_duplicates.ipynb | Xử lý giá trị thiếu & trùng | step1_merged.csv | step3_cleaned.csv | `feature/missing-duplicates` |
-| 4 | 04_outliers_handling.ipynb | Xử lý ngoại lai (IQR) | step3_cleaned.csv | step4_nooutliers.csv | `feature/outliers-handling` |
-| 5 | 05_data_encoding.ipynb | Chuẩn hóa & mã hóa dữ liệu | step4_nooutliers.csv | step5_encoded.csv | `feature/data-encoding` |
-| 6 | 06_feature_rfm.ipynb | Tính toán RFM features | step5_encoded.csv | olist_cleaned.csv | `feature/rfm-features` |
+| Bước | Notebook | Mô Tả | Input | Output |
+|------|----------|-------|-------|--------|
+| 1 | 01_data_integration.ipynb | Tích hợp 4 bảng gốc | 4 CSV | step1_merged.csv |
+| 2 | 02_eda_exploration.ipynb | Khám phá & phân tích dữ liệu | step1_merged.csv | (Không) |
+| 3 | 03_missing_duplicates.ipynb | Xử lý giá trị thiếu & trùng | step1_merged.csv | step3_cleaned.csv |
+| 4 | 04_outliers_handling.ipynb | Xử lý ngoại lai (IQR) | step3_cleaned.csv | step4_nooutliers.csv |
+| 5 | 05_data_encoding.ipynb | Chuẩn hóa & mã hóa dữ liệu | step4_nooutliers.csv | step5_encoded.csv |
+| 6 | 06_feature_rfm.ipynb | Tính toán RFM features | step5_encoded.csv | olist_cleaned.csv |
 
 **Kết quả:** `olist_cleaned.csv` – Dataset sạch sẵn sàng cho phân tích
 
@@ -307,65 +307,7 @@ Xem [HUONG_DAN_6_BUOC.md](./HUONG_DAN_6_BUOC.md) để biết chi tiết giai đ
 
 ---
 
-# 9. Quy tắc Git
-
-Không làm việc trực tiếp trên branch `main`. Mỗi thành viên tạo branch riêng cho công việc của mình:
-
-```powershell
-git pull origin main
-git checkout -b feature/ten-chi-tiet-cong-viec
-```
-
-**Ví dụ cho 6 bước tiền xử lý (Giai Đoạn 1):**
-
-```powershell
-# Bước 1: Data Integration
-git checkout -b feature/data-integration
-
-# Bước 2: EDA Exploration
-git checkout -b feature/eda-exploration
-
-# Bước 3: Missing & Duplicates
-git checkout -b feature/missing-duplicates
-
-# Bước 4: Outliers Handling
-git checkout -b feature/outliers-handling
-
-# Bước 5: Data Encoding
-git checkout -b feature/data-encoding
-
-# Bước 6: RFM Features
-git checkout -b feature/rfm-features
-```
-
-Sau khi hoàn thành, commit và push code:
-
-```powershell
-git add notebooks/*.ipynb data/processed/*.csv
-git commit -m "Add step X: [Mo ta chi tiet]"
-git push -u origin feature/ten-chi-tiet-cong-viec
-```
-
-**Branch naming cho các giai đoạn khác:**
-
-```powershell
-# Giai đoạn 2: Clustering
-git checkout -b feature/clustering-analysis
-
-# Giai đoạn 3: Classification
-git checkout -b feature/classification-models
-
-# Giai đoạn 4: Association Rules
-git checkout -b feature/association-rules
-```
-
-Tạo **Pull Request** trên GitHub để kiểm tra trước khi merge vào `main`.
-
-Lưu ý: Không commit dữ liệu thô trong `data/raw/` (đã được thêm vào `.gitignore`).
-
----
-
-# 10. Cập nhật Code Mới Nhất
+# 9. Cập nhật Code Mới Nhất
 
 Trước khi bắt đầu làm việc, cập nhật branch của bạn với mã mới nhất:
 
