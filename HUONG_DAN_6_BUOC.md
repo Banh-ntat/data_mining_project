@@ -6,10 +6,10 @@
 |--------|----------|-----------|-----------|
 | 1️⃣ | `01_data_integration.ipynb` | Ngân | Hoàn thành |
 | 2️⃣ | `02_eda_exploration.ipynb` | Thư | Hoàn thành |
-| 3️⃣ | `03_data_cleaning.ipynb` | Sang | Chưa xong |
-| 4️⃣ | `04_data_transformation.ipynb` | Phúc | Chưa xong |
-| 5️⃣ | `05_feature_engineering.ipynb` | Chiến | Chưa xong |
-| 6️⃣ | `06_data_export.ipynb` | Hoàng | Chưa xong |
+| 3️⃣ | `03_missing_duplicates.ipynb` | Sang | Chưa xong |
+| 4️⃣ | `04_outliers_handling.ipynb` | Phúc | Chưa xong |
+| 5️⃣ | `05_data_encoding.ipynb` | Chiến | Chưa xong |
+| 6️⃣ | `06_feature_rfm.ipynb` | Hoàng | Chưa xong |
 
 ---
 
@@ -81,14 +81,14 @@ Raw Data
    ↓ (output: step1_merged.csv)
 [02] EDA Exploration (Khám phá & phân tích)
    ↓ (không có output file)
-[03] Data Cleaning ⭐ CẦN LÀMLÀ (Làm sạch dữ liệu)
-   ↓ (output: step2_cleaned.csv)
-[04] Data Transformation ⭐ CẦN LÀM (Biến đổi & chuẩn hóa)
-   ↓ (output: step3_transformed.csv)
-[05] Feature Engineering ⭐ CẦN LÀM (Tạo features mới)
-   ↓ (output: step4_features.csv)
-[06] Data Export ⭐ CẦN LÀM (Xuất dữ liệu cuối cùng)
-   ↓ (output: final_dataset.csv + thống kê)
+[03] Data Cleaning ⭐ CẦN LÀM (Missing + Duplicates)
+   ↓ (output: step3_cleaned.csv)
+[04] Outliers Handling ⭐ CẦN LÀM (IQR + xử lý ngoại lai)
+   ↓ (output: step4_nooutliers.csv)
+[05] Data Encoding ⭐ CẦN LÀM (Type conversion + encoding)
+   ↓ (output: step5_encoded.csv)
+[06] Feature RFM ⭐ CẦN LÀM (Recency + Frequency + Monetary)
+   ↓ (output: olist_cleaned.csv)
 Final Clean Dataset
 ```
 
@@ -607,8 +607,8 @@ git checkout -b feature/rfm                      # Người 4
 # Sau khi hoàn thành và kiểm tra không có lỗi:
 git add notebooks/03_missing_duplicates.ipynb
 git add data/processed/step3_cleaned.csv
-git commit -m "Add missing and duplicate handling"
-git push -u origin feature/missing-duplicates
+git commit -m "Add data cleaning and duplicate handling"
+git push -u origin feature/data-cleaning
 
 # Tương tự cho các bước khác thay notebook name & branch name
 # Lưu ý: Không push data/raw/ vào GitHub
@@ -626,7 +626,7 @@ git push -u origin feature/missing-duplicates
 
 Mỗi thành viên **PHẢI** kiểm tra trước khi báo hoàn thành:
 
-- [ ] **Tên Notebook đúng** (`03_data_cleaning.ipynb`, `04_data_transformation.ipynb`, v.v.)
+- [ ] **Tên Notebook đúng** (`03_missing_duplicates.ipynb`, `04_outliers_handling.ipynb`, `05_data_encoding.ipynb`, `06_feature_rfm.ipynb`)
 - [ ] **Input file đúng** (từ output của người trước)
 - [ ] **Output file đúng** (theo quy ước tên)
 - [ ] **Notebook chạy không lỗi** (Kernel → Restart & Run All)
