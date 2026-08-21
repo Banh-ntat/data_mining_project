@@ -1,0 +1,47 @@
+﻿thuoc_tinh,y_nghia,kieu_du_lieu,thang_do,so_gia_tri_duy_nhat,ti_le_thieu_%,gia_tri_min,gia_tri_max,vi_du
+ID,,str,,7728394,0.0,,,A-1
+Source,,str,,3,0.0,,,Source2
+Severity,,int64,,4,0.0,1,4,3
+Start_Time,,str,,6131796,0.0,,,2016-02-08 05:46:00
+End_Time,,str,,6705355,0.0,,,2016-02-08 11:00:00
+Start_Lat,,float64,,2428358,0.0,24.5548,49.002201,39.865147
+Start_Lng,,float64,,2482533,0.0,-124.623833,-67.113167,-84.058723
+End_Lat,,float64,,1568172,44.03,24.566013,49.075,40.11206
+End_Lng,,float64,,1605789,44.03,-124.545748,-67.10924200000001,-83.03187
+Distance(mi),,float64,,22382,0.0,0.0,441.75,0.01
+Description,,str,,3761578,0.0,,,Right lane blocked due to accident on I-70 Eastbound at Exit 41 OH-235 State Route 4.
+Street,,str,,336306,0.14,,,I-70 E
+City,,str,,13678,0.0,,,Dayton
+County,,str,,1871,0.0,,,Montgomery
+State,,str,,49,0.0,,,OH
+Zipcode,,str,,825094,0.02,,,45424
+Country,,str,,1,0.0,,,US
+Timezone,,str,,4,0.1,,,US/Eastern
+Airport_Code,,str,,2045,0.29,,,KFFO
+Weather_Timestamp,,str,,941331,1.56,,,2016-02-08 05:58:00
+Temperature(F),,float64,,860,2.12,-89.0,207.0,36.9
+Wind_Chill(F),,float64,,1001,25.87,-89.0,207.0,33.3
+Humidity(%),,float64,,100,2.25,1.0,100.0,91.0
+Pressure(in),,float64,,1144,1.82,0.0,58.63,29.68
+Visibility(mi),,float64,,92,2.29,0.0,140.0,10.0
+Wind_Direction,,str,,24,2.27,,,Calm
+Wind_Speed(mph),,float64,,184,7.39,0.0,1087.0,3.5
+Precipitation(in),,float64,,299,28.51,0.0,36.47,0.02
+Weather_Condition,,str,,144,2.24,,,Light Rain
+Amenity,,bool,,2,0.0,False,True,False
+Bump,,bool,,2,0.0,False,True,False
+Crossing,,bool,,2,0.0,False,True,False
+Give_Way,,bool,,2,0.0,False,True,False
+Junction,,bool,,2,0.0,False,True,False
+No_Exit,,bool,,2,0.0,False,True,False
+Railway,,bool,,2,0.0,False,True,False
+Roundabout,,bool,,2,0.0,False,True,False
+Station,,bool,,2,0.0,False,True,False
+Stop,,bool,,2,0.0,False,True,False
+Traffic_Calming,,bool,,2,0.0,False,True,False
+Traffic_Signal,,bool,,2,0.0,False,True,False
+Turning_Loop,,bool,,1,0.0,False,False,False
+Sunrise_Sunset,,str,,2,0.3,,,Night
+Civil_Twilight,,str,,2,0.3,,,Night
+Nautical_Twilight,,str,,2,0.3,,,Night
+Astronomical_Twilight,,str,,2,0.3,,,Night
