@@ -4,9 +4,15 @@ Dự án môn **Khai phá dữ liệu**, thực hiện 4 bài tập thực hành
 
 | Bộ | Dữ liệu | Kỹ thuật thực hiện |
 |----|---------|---------------------|
-| Bộ 1 | Olist Brazilian E-Commerce | Luật kết hợp, Gom cụm |
-| Bộ 2 | Inside Airbnb – New York City | Phân lớp, Gom cụm |
+| Bộ 1 | Olist Brazilian E-Commerce | Phân lớp, Gom cụm |
+| Bộ 2 | Inside Airbnb – New York City | Luật kết hợp, Gom cụm |
 | Bộ 3 | US Accidents | Phân lớp, Luật kết hợp |
+
+> Ghi chú: Luật kết hợp ban đầu dự kiến làm trên Olist, nhưng khảo sát
+> thực tế (Mục 1.3 của `khao-sat.ipynb`) cho thấy đa số đơn hàng Olist
+> chỉ có 1 sản phẩm/ngành hàng — không đủ đa dạng để sinh luật kết hợp
+> có ý nghĩa. Vì vậy nhóm chuyển Luật kết hợp sang Airbnb (mỗi listing
+> có nhiều tiện nghi cùng lúc, phù hợp hơn cho Apriori/FP-Growth).
 
 Phân công 6 thành viên: xem chi tiết trong [`HUONG_DAN_LAM_BAI.md`](./HUONG_DAN_LAM_BAI.md).
 
@@ -82,6 +88,12 @@ pip list
 
 **Dữ liệu thô KHÔNG được đưa lên GitHub** (đã thêm `data/raw/` vào `.gitignore`). Mỗi người phải tự tải và đặt đúng vị trí bên dưới trước khi chạy notebook.
 
+> ⚠️ Tên thư mục dưới đây phải khớp **chính xác** (kể cả dấu gạch dưới
+> `_`) với đường dẫn mà `khao-sat.ipynb` dùng để đọc file
+> (`RAW_DIR = '../data/raw'`). Đặt sai tên thư mục (ví dụ dùng gạch
+> ngang `-` thay vì gạch dưới `_`) sẽ khiến notebook báo lỗi
+> `FileNotFoundError` khi chạy.
+
 ### 6.1. Bộ 1 – Olist Brazilian E-Commerce
 
 - Nguồn: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
@@ -98,6 +110,7 @@ data/raw/olist/
 - Chọn thành phố **New York City** trong danh sách.
 - Tải file **`listings.csv`** bản chi tiết (không dùng bản `listings_summary.csv` vì bị rút gọn thuộc tính).
 - Có thể tải thêm `calendar.csv`, `reviews.csv` nếu nhóm cần cho luật kết hợp/gom cụm.
+- Giấy phép: Creative Commons Attribution 4.0 International (CC BY 4.0).
 - Copy vào:
 
 ```text
@@ -107,11 +120,11 @@ data/raw/airbnb/
 ### 6.3. Bộ 3 – US Accidents
 
 - Nguồn: https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents
-- Cần đăng nhập Kaggle → **Download** → giải nén(Đặt tên: US_Accidents).
+- Cần đăng nhập Kaggle → **Download** → giải nén (đặt tên file: `US_Accidents.csv`).
 - Đặt file gốc chưa lọc vào:
 
 ```text
-data/raw/us-accidents/
+data/raw/us_accidents/
 ```
 
 ### 6.4. Lưu ý chung
@@ -136,21 +149,21 @@ ten-nhom/
 │   ├── raw/                        # dữ liệu gốc — KHÔNG commit
 │   │   ├── olist/
 │   │   ├── airbnb/
-│   │   └── us-accidents/
+│   │   └── us_accidents/
 │   └── processed/                  # dữ liệu sau tiền xử lý
 │       ├── olist/
 │       ├── airbnb/
-│       └── us-accidents/
+│       └── us_accidents/
 │
 ├── bai1-du-lieu-tien-xu-ly/
 │   ├── khao-sat.ipynb              # 1 notebook gộp cả 3 bộ (hàm dùng chung + 3 phần Bộ 1/2/3 + ma trận)
 │   └── bao-cao-bai1.pdf
 │
-├── bai2-phan-lop/                  # Airbnb + US Accidents
+├── bai2-phan-lop/                  # Olist + US Accidents
 │   ├── phan-lop.ipynb
 │   └── bao-cao-bai2.pdf
 │
-├── bai3-luat-ket-hop/              # Olist + US Accidents
+├── bai3-luat-ket-hop/              # Airbnb + US Accidents
 │   ├── luat-ket-hop.ipynb
 │   └── bao-cao-bai3.pdf
 │
