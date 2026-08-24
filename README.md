@@ -1,315 +1,197 @@
-# Data Mining Project – Olist E-Commerce
+# Data Mining Project – Nhóm 3
 
-Dự án môn **Khai phá dữ liệu (Data Mining)**, thực hiện quy trình khai phá dữ liệu từ **Brazilian E-Commerce Public Dataset by Olist** sử dụng Python.
+Dự án môn **Khai phá dữ liệu**, thực hiện 4 bài tập thực hành (tiền xử lý, phân lớp, luật kết hợp, gom cụm) trên **3 bộ dữ liệu**:
 
-## Mục tiêu
+| Bộ | Dữ liệu | Kỹ thuật thực hiện |
+|----|---------|---------------------|
+| Bộ 1 | Olist Brazilian E-Commerce | Phân lớp, Gom cụm |
+| Bộ 2 | Inside Airbnb – New York City | Luật kết hợp, Gom cụm |
+| Bộ 3 | US Accidents | Phân lớp, Luật kết hợp |
 
-Xây dựng quy trình **khai phá dữ liệu hoàn chỉnh** từ dữ liệu thô đến insights kinh doanh:
+> Ghi chú: Luật kết hợp ban đầu dự kiến làm trên Olist, nhưng khảo sát
+> thực tế (Mục 1.3 của `khao-sat.ipynb`) cho thấy đa số đơn hàng Olist
+> chỉ có 1 sản phẩm/ngành hàng — không đủ đa dạng để sinh luật kết hợp
+> có ý nghĩa. Vì vậy nhóm chuyển Luật kết hợp sang Airbnb (mỗi listing
+> có nhiều tiện nghi cùng lúc, phù hợp hơn cho Apriori/FP-Growth).
 
-```text
-Dữ liệu thô
-    ↓
-[GIAI ĐOẠN 1] Tiền Xử Lý (6 bước)
-├─ 01. Tích hợp dữ liệu
-├─ 02. Khám phá dữ liệu (EDA)
-├─ 03. Xử lý thiếu & trùng
-├─ 04. Xử lý ngoại lai
-├─ 05. Chuẩn hóa & mã hóa
-└─ 06. Tạo RFM features
-    ↓ (output: olist_cleaned.csv)
-[GIAI ĐOẠN 2] Phân Cụm (Clustering)
-├─ K-Means
-├─ Customer Segmentation
-└─ RFM Analysis
-    ↓
-[GIAI ĐOẠN 3] Phân Loại (Classification)
-├─ Decision Tree / Random Forest
-├─ Logistic Regression
-└─ Model Evaluation
-    ↓
-[GIAI ĐOẠN 4] Luật Kết Hợp (Association Rules)
-├─ Apriori / Eclat
-├─ Market Basket Analysis
-└─ Product Recommendations
-    ↓
-Insights & Business Decisions
-```
+Phân công 6 thành viên: xem chi tiết trong [`HUONG_DAN_LAM_BAI.md`](./HUONG_DAN_LAM_BAI.md).
 
 ---
-
-# Công cụ sử dụng
-
-* **Python**
-* **Visual Studio Code**
-* **Jupyter Notebook**
-* **Git + GitHub**
-
-### Thư viện Python
-
-```text
-# Data Processing
-pandas
-numpy
-
-# Visualization
-matplotlib
-seaborn
-
-# Machine Learning
-scikit-learn
-mlxtend (Association Rules)
-
-# Jupyter
-ipykernel
-jupyter
-```
-
-Các thư viện được quản lý trong `requirements.txt`.
-
----
-
-# Cấu trúc Project
-
-```text
-data_mining_project/
-│
-├── data/
-│   ├── raw/                    # Dữ liệu thô ban đầu
-│   └── processed/              # Dữ liệu sau xử lý
-│
-├── notebooks/
-│   ├── 01_data_integration.ipynb        # Tích hợp dữ liệu
-│   ├── 02_eda_exploration.ipynb         # Khám phá dữ liệu
-│   ├── 03_missing_duplicates.ipynb           # Xử lý thiếu & trùng
-│   ├── 04_outliers_handling.ipynb       # Xử lý ngoại lai
-│   ├── 05_data_encoding.ipynb           # Mã hóa dữ liệu
-│   ├── 06_feature_rfm.ipynb             # Tạo feature RFM
-│   │
-│   ├── 07_clustering_analysis.ipynb     # Phân cụm khách hàng
-│   ├── 08_classification_models.ipynb   # Mô hình phân loại
-│   └── 09_association_rules.ipynb       # Luật kết hợp
-│
-├── .gitignore
-├── README.md
-├── requirements.txt
-└── HUONG_DAN_6_BUOC.md         # Hướng dẫn chi tiết tiền xử lý
-```
-
-**`data/raw/`** – Dữ liệu thô gốc từ Olist (4 file CSV)  
-**`data/processed/`** – Dữ liệu sau từng bước xử lý  
-**`notebooks/`** – Tất cả Jupyter Notebook cho 4 giai đoạn khai phá
-
----
-
-# Hướng dẫn cài đặt
 
 ## 1. Cài Python
 
-Kiểm tra Python:
+Kiểm tra đã có Python chưa (PowerShell):
 
 ```powershell
 python --version
 ```
 
-Nếu chưa có Python, tải tại:
-
-https://www.python.org/
+Nếu chưa có, tải tại: https://www.python.org/ (chọn bản ≥ 3.10, khi cài nhớ tick **Add Python to PATH**).
 
 ---
 
 ## 2. Cài Git
 
-Kiểm tra:
-
 ```powershell
 git --version
 ```
 
-Nếu chưa có Git, tải tại:
-
-https://git-scm.com/
+Nếu chưa có, tải tại: https://git-scm.com/
 
 ---
 
-# 3. Clone project
-
-Mở Terminal/PowerShell tại thư mục muốn lưu project:
+## 3. Clone project
 
 ```powershell
-git clone https://github.com/Banh-ntat/data_mining_project.git
-```
-
-Sau đó:
-
-```powershell
-cd data_mining_project
-```
-
-Mở bằng VS Code:
-
-```powershell
+git clone https://github.com/<ten-repo-cua-nhom>.git
+cd <ten-repo-cua-nhom>
 code .
 ```
 
 ---
 
-# 4. Tạo môi trường Python
+## 4. Tạo môi trường ảo Python
 
-Trong Terminal của VS Code:
+Trong Terminal của VS Code (PowerShell):
 
 ```powershell
 python -m venv venv
-```
-
-Kích hoạt môi trường ảo:
-
-```powershell
 .\venv\Scripts\activate
 ```
 
-Nếu thành công, Terminal sẽ xuất hiện:
+Nếu kích hoạt thành công, đầu dòng lệnh sẽ hiện `(venv)`.
 
-```text
-(venv)
-```
+> Nếu PowerShell báo lỗi không cho chạy script, mở PowerShell với quyền Admin và chạy 1 lần:
+> ```powershell
+> Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+> ```
 
 ---
 
-# 5. Cài thư viện
-
-Sau khi kích hoạt `venv`:
+## 5. Cài thư viện
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-Nếu muốn kiểm tra:
+Kiểm tra:
 
 ```powershell
 pip list
 ```
 
+`requirements.txt` gồm: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `mlxtend`, `jupyter`, `ipykernel`.
+
 ---
 
-# 6. Chuẩn bị Dataset
+## 6. Chuẩn bị dữ liệu (BẮT BUỘC – mỗi thành viên tự tải về máy)
 
-Dataset sử dụng:
+**Dữ liệu thô KHÔNG được đưa lên GitHub** (đã thêm `data/raw/` vào `.gitignore`). Mỗi người phải tự tải và đặt đúng vị trí bên dưới trước khi chạy notebook.
 
-**Brazilian E-Commerce Public Dataset by Olist**
+> ⚠️ Tên thư mục dưới đây phải khớp **chính xác** (kể cả dấu gạch dưới
+> `_`) với đường dẫn mà `khao-sat.ipynb` dùng để đọc file
+> (`RAW_DIR = '../data/raw'`). Đặt sai tên thư mục (ví dụ dùng gạch
+> ngang `-` thay vì gạch dưới `_`) sẽ khiến notebook báo lỗi
+> `FileNotFoundError` khi chạy.
 
-Sau khi tải và giải nén dataset, có nhiều file CSV. Trong giai đoạn hiện tại, sử dụng 4 file:
+### 6.1. Bộ 1 – Olist Brazilian E-Commerce
+
+- Nguồn: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+- Cần đăng nhập Kaggle → nút **Download** → giải nén.
+- Copy toàn bộ các file `.csv` vào:
 
 ```text
-olist_orders_dataset.csv
-olist_order_items_dataset.csv
-olist_customers_dataset.csv
-olist_products_dataset.csv
+data/raw/olist/
 ```
 
-Đặt 4 file vào:
+### 6.2. Bộ 2 – Inside Airbnb, New York City
+
+- Nguồn: http://insideairbnb.com/get-the-data/
+- Chọn thành phố **New York City** trong danh sách.
+- Tải file **`listings.csv`** bản chi tiết (không dùng bản `listings_summary.csv` vì bị rút gọn thuộc tính).
+- Có thể tải thêm `calendar.csv`, `reviews.csv` nếu nhóm cần cho luật kết hợp/gom cụm.
+- Giấy phép: Creative Commons Attribution 4.0 International (CC BY 4.0).
+- Copy vào:
 
 ```text
-data/raw/
+data/raw/airbnb/
 ```
 
-Cấu trúc:
+### 6.3. Bộ 3 – US Accidents
+
+- Nguồn: https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents
+- Cần đăng nhập Kaggle → **Download** → giải nén (đặt tên file: `US_Accidents.csv`).
+- Đặt file gốc chưa lọc vào:
 
 ```text
-data/
-├── raw/
-│   ├── olist_orders_dataset.csv
-│   ├── olist_order_items_dataset.csv
-│   ├── olist_customers_dataset.csv
-│   └── olist_products_dataset.csv
+data/raw/us_accidents/
+```
+
+### 6.4. Lưu ý chung
+
+- Không đổi tên file gốc tải về.
+- Không sửa trực tiếp dữ liệu trong `data/raw/`.
+- Không upload bất kỳ file nào trong `data/raw/` lên Git.
+- Dữ liệu sau xử lý (`data/processed/`) là dữ liệu nhẹ hơn, **có thể** commit nếu nhóm thống nhất, hoặc dùng script tái tạo (`bai1.../khao-sat.ipynb` chạy lại được).
+
+---
+
+## 7. Cấu trúc thư mục
+
+```text
+ten-nhom/
+├── README.md                       # file này
+├── HUONG_DAN_LAM_BAI.md             # hướng dẫn chi tiết làm từng bài
+├── requirements.txt
+├── .gitignore
 │
-└── processed/
+├── data/
+│   ├── raw/                        # dữ liệu gốc — KHÔNG commit
+│   │   ├── olist/
+│   │   ├── airbnb/
+│   │   └── us_accidents/
+│   └── processed/                  # dữ liệu sau tiền xử lý
+│       ├── olist/
+│       ├── airbnb/
+│       └── us_accidents/
+│
+├── bai1-du-lieu-tien-xu-ly/
+│   ├── khao-sat.ipynb              # 1 notebook gộp cả 3 bộ (hàm dùng chung + 3 phần Bộ 1/2/3 + ma trận)
+│   └── bao-cao-bai1.pdf
+│
+├── bai2-phan-lop/                  # Olist + US Accidents
+│   ├── phan-lop.ipynb
+│   └── bao-cao-bai2.pdf
+│
+├── bai3-luat-ket-hop/              # Airbnb + US Accidents
+│   ├── luat-ket-hop.ipynb
+│   └── bao-cao-bai3.pdf
+│
+└── bai4-gom-cum/                   # Olist + Airbnb
+    ├── gom-cum.ipynb
+    └── bao-cao-bai4.pdf
 ```
-
-### Lưu ý
-
-* Không đổi tên các file CSV.
-* Không chỉnh sửa trực tiếp dữ liệu trong `data/raw/`.
-* Không upload dữ liệu thô lên GitHub.
-* `data/raw/` đã được thêm vào `.gitignore`.
-
-Mỗi thành viên cần **tự tải dataset về máy**.
 
 ---
 
-# 7. Làm việc với Jupyter Notebook
+## 8. Làm việc với Jupyter Notebook trong VS Code
 
-Mở file `.ipynb` trong VS Code. Chọn Python Kernel ở góc trên bên phải: `Python 3.x ('venv')`
-
-Nếu chưa thấy kernel, chạy lệnh sau:
+1. Mở file `.ipynb`.
+2. Ở góc trên bên phải, chọn kernel `Python 3.x ('venv')`.
+3. Nếu chưa thấy kernel, chạy:
 
 ```powershell
 python -m ipykernel install --user --name=data-mining-venv
 ```
 
-Chạy từng cell bằng **Shift + Enter**. Sau khi hoàn thành, chạy lại toàn bộ notebook (Kernel → Restart & Run All) để kiểm tra không có lỗi.
+4. Chạy từng ô bằng **Shift + Enter**.
+5. Trước khi commit/push: **Kernel → Restart & Run All** để đảm bảo notebook chạy lại được từ đầu, không lỗi.
 
 ---
 
-# 8. Quy trình và Cấu trúc Notebook
+## 9. Git & làm việc nhóm
 
-Dự án được chia thành **4 giai đoạn** khai phá dữ liệu:
-
-## Giai Đoạn 1: Tiền Xử Lý Dữ Liệu (Data Preprocessing)
-
-Chuẩn bị dữ liệu sạch cho phân tích qua 6 bước:
-
-| Bước | Notebook | Mô Tả | Input | Output |
-|------|----------|-------|-------|--------|
-| 1 | 01_data_integration.ipynb | Tích hợp 4 bảng gốc | 4 CSV | step1_merged.csv |
-| 2 | 02_eda_exploration.ipynb | Khám phá & phân tích dữ liệu | step1_merged.csv | (Không) |
-| 3 | 03_missing_duplicates.ipynb | Xử lý giá trị thiếu & trùng | step1_merged.csv | step3_cleaned.csv |
-| 4 | 04_outliers_handling.ipynb | Xử lý ngoại lai (IQR) | step3_cleaned.csv | step4_nooutliers.csv |
-| 5 | 05_data_encoding.ipynb | Chuẩn hóa & mã hóa dữ liệu | step4_nooutliers.csv | step5_encoded.csv |
-| 6 | 06_feature_rfm.ipynb | Tính toán RFM features | step5_encoded.csv | olist_cleaned.csv |
-
-**Kết quả:** `olist_cleaned.csv` – Dataset sạch sẵn sàng cho phân tích
-
-**Lưu ý:** Xem [HUONG_DAN_6_BUOC.md](./HUONG_DAN_6_BUOC.md) để biết chi tiết từng bước, ví dụ code, và checklist bắt buộc.
-
-## Giai Đoạn 2: Phân Cụm (Clustering)
-
-Notebook: `07_clustering_analysis.ipynb`
-
-Phân tích nhóm khách hàng dựa trên RFM:
-- Áp dụng K-Means clustering
-- Phân loại khách hàng: VIP, Loyal, At-risk, New
-- Phân tích hành vi từng segment
-- Đề xuất chiến lược marketing cho mỗi nhóm
-
-## Giai Đoạn 3: Phân Loại (Classification)
-
-Notebook: `08_classification_models.ipynb`
-
-Xây dựng mô hình dự đoán:
-- Dự đoán tình trạng đơn hàng (Delivered, Cancelled, etc.)
-- Phân loại khách hàng repeat buyer vs. one-time buyer
-- Các thuật toán: Decision Tree, Random Forest, Logistic Regression
-- Đánh giá mô hình, tuning hyperparameters
-
-## Giai Đoạn 4: Luật Kết Hợp (Association Rules)
-
-Notebook: `09_association_rules.ipynb`
-
-Phát hiện pattern mua hàng:
-- Áp dụng Apriori/Eclat algorithm
-- Tìm các cặp sản phẩm thường mua cùng
-- Tính toán support, confidence, lift
-- Đề xuất sản phẩm (Product Recommendation)
-
----
-
-Xem [HUONG_DAN_6_BUOC.md](./HUONG_DAN_6_BUOC.md) để biết chi tiết giai đoạn tiền xử lý.
-
----
-
-# 9. Cập nhật Code Mới Nhất
-
-Trước khi bắt đầu làm việc, cập nhật branch của bạn với mã mới nhất:
+Trước khi bắt đầu làm việc, luôn cập nhật branch từ `main`:
 
 ```powershell
 git checkout main
@@ -318,36 +200,16 @@ git checkout feature/ten-branch-cua-ban
 git merge main
 ```
 
----
+Quy tắc:
 
-# Lưu ý Quan Trọng
-
-**Quy Trình Xử Lý Dữ Liệu:**
-- Luôn bắt đầu từ giai đoạn tiền xử lý (notebooks 01-06) để chuẩn bị dữ liệu
-- Không bỏ qua bước EDA – cần hiểu dữ liệu trước khi áp dụng thuật toán
-- Các giai đoạn phân cụm, phân loại, luật kết hợp phụ thuộc vào output của tiền xử lý
-
-**Git & Collaboration:**
-- Sử dụng đường dẫn tương đối (`../data/processed/...`) thay vì đường dẫn tuyệt đối
-- Không commit folder `venv/`, `__pycache__/` hoặc dữ liệu thô trong `data/raw/`
-- Chạy Kernel → Restart & Run All trước khi push để kiểm tra notebook chạy không lỗi
-- Ghi rõ lý do cho mỗi quyết định xử lý dữ liệu trong comment
-
-**Data Integrity:**
-- Không sửa đổi cấu trúc project mà không thảo luận trước
-- Lưu giữ tất cả file output trung gian cho debugging
-- Không thay đổi file output của người khác
-
-**Documenting Results:**
-- Ghi nhận kết quả từng giai đoạn (accuracy, clustering quality, rule metrics)
-- Tạo báo cáo tóm tắt insights chính từ từng phân tích
+- Dùng đường dẫn tương đối (`../data/processed/...`), không dùng đường dẫn tuyệt đối.
+- Không commit `venv/`, `__pycache__/`, hoặc bất kỳ file nào trong `data/raw/`.
+- Không sửa file/notebook của người khác khi chưa trao đổi.
+- Mỗi bước tiền xử lý/thuật toán ghi rõ lý do trong comment hoặc markdown cell.
+- Đặt tên branch theo mẫu: `feature/<ten>-<bai>` (vd: `feature/an-bai2-airbnb`).
 
 ---
 
-Xem [HUONG_DAN_6_BUOC.md](./HUONG_DAN_6_BUOC.md) để có hướng dẫn chi tiết giai đoạn tiền xử lý (notebooks 01-06).
+## 10. Tài liệu liên quan
 
----
-
-## Kết Quả Hướng Tới
-
-Xây dựng quy trình khai phá dữ liệu hoàn chỉnh, từ tiền xử lý dữ liệu đến phân tích sâu sắc, giúp đưa ra những hiểu biết chi tiết về khách hàng, sản phẩm, và xu hướng mua hàng để hỗ trợ quyết định kinh doanh.
+- [`HUONG_DAN_LAM_BAI.md`](./HUONG_DAN_LAM_BAI.md) — phân công thành viên, checklist chi tiết cho từng bài, tiêu chí báo cáo.
